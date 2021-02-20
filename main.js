@@ -41,7 +41,19 @@ const optionDefinitions = [
   }
   
 ];
+
 const options = commandLineArgs(optionDefinitions);
+
+const chromeOptions = {
+    headless: true,
+    defaultViewport: null,
+    args: [
+        '--no-sandbox',
+        '--window-size='+options.width+','+options.height
+      ]
+}
+
+
 
 // create output directiory
 //fs.mkdir();
@@ -56,7 +68,7 @@ if(options.list && fs.statSync(options.list)){
 
 // get screenshots
 (async() => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch(chromeOptions);
     var promises = [];
     
     const saveScreenshot = async function (url, filename){
@@ -71,13 +83,11 @@ if(options.list && fs.statSync(options.list)){
     }else if(csvlist.length > 0){
         for(let index in csvlist){
             let csvitem = csvlist[index];
-            console.log(csvitem);
             promises.push(saveScreenshot(csvitem[0], csvitem[1]));
             if(promises.length >= options.multiple){
                 await Promise.all(promises)
                 .then(() => {
                     promises=[];
-                    console.log("done!");
                 }).catch(()=>{
                     promises=[];
                     console.log("error!");
@@ -88,10 +98,10 @@ if(options.list && fs.statSync(options.list)){
 
     await Promise.all(promises)
         .then(() => {
-            console.log("done all!");
         }).catch(()=>{
-            console.log("error all!");
+            console.log("error!");
         });
+        console.log("DONE");
     await browser.close();
 })();
 
