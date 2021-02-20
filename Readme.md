@@ -4,7 +4,8 @@ INTRODUCTION
 What's "screw"
 --------------
 
- Screw is web crawler for saving screenshots following url lists.
+ screw is web crawler for saving screenshots following url lists.
+ screw is named after "SCreen REcorder for Websites".
 
 Install
 -------
@@ -42,3 +43,24 @@ Usage
 
 ### get multiple screenshots with url list
 `node path/to/main.js -l list.csv`
+
+### command options
+
+| op | option     | default        | description                         |
+|----|------------|----------------|-------------------------------------|
+| -u | --url      |                | A url for getting screenshot        |
+| -o | --output   | screenshot.png | File name of screenshot             |
+| -w | --width    | 1280           | Width of screenshot                 |
+| -h | --height   | 800            | Height of screenshot                |
+| -l | --list     |                | Filepath to url list written in csv | 
+| -m | --multiple | 10             | number of concurrent processes      |
+
+### url list format written in CSV
+* No header row 
+* UTF-8 without BOM
+* Url for 1col, filename for 2col
+
+```urllist.csv
+https://www.google.com,google.png
+https://www.msn.com,msn.png
+```
