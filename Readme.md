@@ -25,9 +25,13 @@ gpgcheck=1
 gpgkey=https://dl.google.com/linux/linux_signing_key.pub
 ```
 
-### Install NodeJS
+`sudo yum -y install google-chrome-stable` 
 
+### Use NodeJS v14 with nvm
 
+`nvm install v14`
+
+`nvm use v14`
 
 ### Install Local Fonts (for Japanese)
 
