@@ -50,14 +50,15 @@ Usage
 
 ### command options
 
-| op | option     | default        | description                         |
-|----|------------|----------------|-------------------------------------|
-| -u | --url      |                | A url for getting screenshot        |
-| -o | --output   | screenshot.png | File name of screenshot             |
-| -w | --width    | 1280           | Width of screenshot                 |
-| -h | --height   | 800            | Height of screenshot                |
-| -l | --list     |                | Filepath to url list written in csv | 
-| -m | --multiple | 10             | number of concurrent processes      |
+| op | option         | default        | description                                 |
+|----|----------------|----------------|---------------------------------------------|
+| -u | --url          |                | A url for getting screenshot                |
+| -o | --output       | screenshot.png | File name of screenshot                     |
+| -w | --width        | 1280           | Width of screenshot                         |
+| -h | --height       | 800            | Height of screenshot                        |
+| -l | --list         |                | Filepath to url list written in csv         | 
+| -m | --multiple     | 10             | number of concurrent processes              |
+| -t | --usetimestamp | false          | append timestamp (YYYYMMDDHHMMSS) as suffix |
 
 ### url list format written in CSV
 * No header row 

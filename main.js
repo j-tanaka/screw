@@ -1,3 +1,4 @@
+require('date-utils');
 const commandLineArgs = require('command-line-args');
 const puppeteer = require("puppeteer");
 const fs = require('fs');
@@ -38,6 +39,12 @@ const optionDefinitions = [
     alias: 'm',
     type: Number,
     defaultValue: 10,
+  },
+  {
+      name: 'usetimestamp',
+      alias: 't',
+      type: Boolean,
+      defaultValue: false,
   }
   
 ];
@@ -72,6 +79,12 @@ if(options.list && fs.statSync(options.list)){
     var promises = [];
     
     const saveScreenshot = async function (url, filename){
+        if(options.usetimestamp){
+            const now = new Date();
+            const timestamp = now.toFormat("YYYYMMDDHH24MISS");
+            filename = filename.replace(".png", "") + "_" + timestamp + ".png"; 
+
+        }
         const page = await browser.newPage();
         await page.goto(url);
         await page.screenshot({ path: filename });
