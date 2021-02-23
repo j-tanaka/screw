@@ -50,15 +50,18 @@ Usage
 
 ### command options
 
-| op | option         | default        | description                                 |
-|----|----------------|----------------|---------------------------------------------|
-| -u | --url          |                | A url for getting screenshot                |
-| -o | --output       | screenshot.png | File name of screenshot                     |
-| -w | --width        | 1280           | Width of screenshot                         |
-| -h | --height       | 800            | Height of screenshot                        |
-| -l | --list         |                | Filepath to url list written in csv         | 
-| -m | --multiple     | 10             | number of concurrent processes              |
-| -t | --usetimestamp | false          | append timestamp (YYYYMMDDHHMMSS) as suffix |
+| op | option         | default        | description                                           |
+|----|----------------|----------------|-------------------------------------------------------|
+| -u | --url          |                | A url for getting screenshot                          |
+| -o | --output       | screenshot.png | File name of screenshot                               |
+| -w | --width        | 1280           | Width of screenshot                                   |
+| -h | --height       | 800            | Height of screenshot                                  |
+| -l | --list         |                | Filepath to url list written in csv                   | 
+| -m | --multiple     | 10             | number of concurrent processes                        |
+| -d | --createdir    | false          | create directory for saving files with timestamp (*1) |
+| -t | --usetimestamp | false          | append timestamp (YYYYMMDDHHMMSS) as suffix           |
+
+(*1) apply only with -t (--usetimestamp) option.
 
 ### url list format written in CSV
 * No header row 

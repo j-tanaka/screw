@@ -2,6 +2,7 @@ require('date-utils');
 const commandLineArgs = require('command-line-args');
 const puppeteer = require("puppeteer");
 const fs = require('fs');
+const path = require('path');
 const csv = require('csv-parse/lib/sync');
 
 // command line option definition
@@ -41,6 +42,12 @@ const optionDefinitions = [
     defaultValue: 10,
   },
   {
+      name: 'createdir',
+      alias: 'd',
+      type: Boolean,
+      defaultValue: false,
+  },
+  {
       name: 'usetimestamp',
       alias: 't',
       type: Boolean,
@@ -73,24 +80,34 @@ if(options.list && fs.statSync(options.list)){
 }
 
 
+
 // get screenshots
 (async() => {
     const browser = await puppeteer.launch(chromeOptions);
-    var promises = [];
+    var promises = []
     
+    // saveScreenshot Function
     const saveScreenshot = async function (url, filename){
+        // append timestamp to filename or create directory following option
         if(options.usetimestamp){
             const now = new Date();
             const timestamp = now.toFormat("YYYYMMDDHH24MISS");
-            filename = filename.replace(".png", "") + "_" + timestamp + ".png"; 
-
+            if(options.createdir){
+                filename = filename.replace(".png", "") + "/" + timestamp + ".png"; 
+            }else{
+                filename = filename.replace(".png", "") + "_" + timestamp + ".png"; 
+            }
         }
+        // create directory with filename
+        fs.mkdirSync(path.dirname(filename), {recursive: true})
+        
         const page = await browser.newPage();
         await page.goto(url);
         await page.screenshot({ path: filename });
         await page.close();
         console.log(url + " save as " + filename);
     }
+    
     if(options.url){
         promises.push(saveScreenshot(options.url, options.output));
     }else if(csvlist.length > 0){
