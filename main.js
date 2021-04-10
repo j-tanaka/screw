@@ -12,6 +12,8 @@ const options = commandLineArgs(optionDefinitions);
         if(options.list){
             const csvlist = new CsvList(); 
             const csv = csvlist.read(options.list);  
+            controller.setCsvList(csv);
+            
         }
         await controller.action();
         console.log("DONE");        

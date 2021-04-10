@@ -2,6 +2,10 @@ const fs = require('fs');
 const csv = require('csv-parse/lib/sync');
 
 class CsvList{
+    constructor(){
+        
+    };
+    
     read(filepath){
         var csvlist = null;
         if(filepath && fs.statSync(filepath)){
@@ -20,3 +24,6 @@ class CsvList{
         this.csvlist = csvlist;
     };
 }
+
+
+module.exports = CsvList;
