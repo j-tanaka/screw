@@ -1,6 +1,6 @@
 {
   "name": "screw",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Web crawler for saving screenshots following list of url",
   "main": "main.js",
   "scripts": {
