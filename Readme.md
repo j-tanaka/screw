@@ -48,6 +48,9 @@ Usage
 ### get multiple screenshots with url list
 `node path/to/main.js -l list.csv`
 
+### Delete captured history (delete message digests) 
+`rm -rf /var/tmp/screw/`
+
 ### command options
 
 | op | option         | default        | description                                           |
@@ -57,9 +60,10 @@ Usage
 | -w | --width        | 1280           | Width of screenshot                                   |
 | -h | --height       | 800            | Height of screenshot                                  |
 | -l | --list         |                | Filepath to url list written in csv                   | 
-| -m | --multiple     | 10             | number of concurrent processes                        |
-| -d | --createdir    | false          | create directory for saving files with timestamp (*1) |
-| -t | --usetimestamp | false          | append timestamp (YYYYMMDDHHMMSS) as suffix           |
+| -m | --multiple     | 10             | Number of concurrent processes                        |
+| -d | --createdir    | false          | Create directory for saving files with timestamp (*1) |
+| -t | --usetimestamp | false          | Append timestamp (YYYYMMDDHHMMSS) as suffix           |
+| -f | --forcecapture | false          | Force capture in spite of no change                   | 
 
 (*1) apply only with -t (--usetimestamp) option.
 
